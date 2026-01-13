@@ -1,0 +1,64 @@
+created:
+    - app/Http/Controllers/KandidatController.php
+    - app/Http/Controllers/TrenerController.php
+    - app/Http/Controllers/PrijavaController.php
+    - app/Http/Controllers/TreningController.php
+    - app/Http/Controllers/TipTreningaController.php
+    - app/Http/Controllers/StatusPrijaveController.php
+    - app/Http/Controllers/SpecijalizacijaController.php
+    - app/Http/Controllers/TrenerSpecijalizacijaController.php
+    - app/Http/Controllers/BrojTelefonaKandidatController.php
+    - app/Http/Controllers/BrojTelefonaTrenerController.php
+    - database/factories/KandidatFactory.php
+    - database/factories/TrenerFactory.php
+    - database/factories/PrijavaFactory.php
+    - database/factories/TreningFactory.php
+    - database/factories/TipTreningaFactory.php
+    - database/factories/StatusPrijaveFactory.php
+    - database/factories/SpecijalizacijaFactory.php
+    - database/factories/TrenerSpecijalizacijaFactory.php
+    - database/factories/BrojTelefonaKandidatFactory.php
+    - database/factories/BrojTelefonaTrenerFactory.php
+    - database/migrations/2026_01_13_144032_create_kandidats_table.php
+    - database/migrations/2026_01_13_144033_create_treners_table.php
+    - database/migrations/2026_01_13_144034_create_prijavas_table.php
+    - database/migrations/2026_01_13_144035_create_trenings_table.php
+    - database/migrations/2026_01_13_144036_create_tip_treningas_table.php
+    - database/migrations/2026_01_13_144037_create_status_prijaves_table.php
+    - database/migrations/2026_01_13_144038_create_specijalizacijas_table.php
+    - database/migrations/2026_01_13_144039_create_trener_specijalizacijas_table.php
+    - database/migrations/2026_01_13_144040_create_broj_telefona_kandidats_table.php
+    - database/migrations/2026_01_13_144041_create_broj_telefona_treners_table.php
+    - app/Models/Kandidat.php
+    - app/Models/Trener.php
+    - app/Models/Prijava.php
+    - app/Models/Trening.php
+    - app/Models/TipTreninga.php
+    - app/Models/StatusPrijave.php
+    - app/Models/Specijalizacija.php
+    - app/Models/TrenerSpecijalizacija.php
+    - app/Models/BrojTelefonaKandidat.php
+    - app/Models/BrojTelefonaTrener.php
+    - tests/Feature/Http/Controllers/KandidatControllerTest.php
+    - tests/Feature/Http/Controllers/TrenerControllerTest.php
+    - tests/Feature/Http/Controllers/PrijavaControllerTest.php
+    - tests/Feature/Http/Controllers/TreningControllerTest.php
+    - tests/Feature/Http/Controllers/TipTreningaControllerTest.php
+    - tests/Feature/Http/Controllers/StatusPrijaveControllerTest.php
+    - tests/Feature/Http/Controllers/SpecijalizacijaControllerTest.php
+    - tests/Feature/Http/Controllers/TrenerSpecijalizacijaControllerTest.php
+    - tests/Feature/Http/Controllers/BrojTelefonaKandidatControllerTest.php
+    - tests/Feature/Http/Controllers/BrojTelefonaTrenerControllerTest.php
+updated:
+    - routes/web.php
+models:
+    Kandidat: { ime_kandidata: string, prezime_kandidata: string, datum_rodjenja: date, email_kandidata: 'string?', adresa: string, telefons: 'hasMany:BrojTelefonaKandidat' }
+    Trener: { ime_trenera: string, prezime_trenera: string, email_trenera: 'string?', korisnicko_ime: string, lozinka: string, specijalizacije: 'belongsToMany:Specijalizacija', telefons: 'hasMany:BrojTelefonaTrener' }
+    Prijava: { kandidat_id: 'belongsTo:Kandidat', trener_id: 'belongsTo:Trener', datum_prijave: date, motivacija: 'text?', status_id: 'belongsTo:StatusPrijave' }
+    Trening: { datum_treninga: date, vreme: time, lokacija: string, trener_id: 'belongsTo:Trener', tip_id: 'belongsTo:TipTreninga' }
+    TipTreninga: { naziv_tipa: string, opis: 'text?' }
+    StatusPrijave: { naziv_statusa: string, opis: 'text?' }
+    Specijalizacija: { naziv_specijalizacije: string }
+    TrenerSpecijalizacija: { trener_id: 'belongsTo:Trener', specijalizacija_id: 'belongsTo:Specijalizacija' }
+    BrojTelefonaKandidat: { kandidat_id: 'belongsTo:Kandidat', broj_telefona: string }
+    BrojTelefonaTrener: { trener_id: 'belongsTo:Trener', broj_telefona: string }

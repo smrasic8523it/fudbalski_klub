@@ -1,0 +1,78 @@
+models:
+  Kandidat:
+    ime_kandidata: string
+    prezime_kandidata: string
+    datum_rodjenja: date
+    email_kandidata: string?
+    adresa: string
+    telefons: hasMany:BrojTelefonaKandidat
+
+  Trener:
+    ime_trenera: string
+    prezime_trenera: string
+    email_trenera: string?
+    korisnicko_ime: string
+    lozinka: string
+    specijalizacije: belongsToMany:Specijalizacija
+    telefons: hasMany:BrojTelefonaTrener
+
+  Prijava:
+    kandidat_id: belongsTo:Kandidat
+    trener_id: belongsTo:Trener
+    datum_prijave: date
+    motivacija: text?
+    status_id: belongsTo:StatusPrijave
+
+  Trening:
+    datum_treninga: date
+    vreme: time
+    lokacija: string
+    trener_id: belongsTo:Trener
+    tip_id: belongsTo:TipTreninga
+
+  # Šifarnici
+  TipTreninga:
+    naziv_tipa: string
+    opis: text?
+
+  StatusPrijave:
+    naziv_statusa: string
+    opis: text?
+
+  Specijalizacija:
+    naziv_specijalizacije: string
+
+  # Međutabele
+  TrenerSpecijalizacija:
+    trener_id: belongsTo:Trener
+    specijalizacija_id: belongsTo:Specijalizacija
+
+  BrojTelefonaKandidat:
+    kandidat_id: belongsTo:Kandidat
+    broj_telefona: string
+
+  BrojTelefonaTrener:
+    trener_id: belongsTo:Trener
+    broj_telefona: string
+
+controllers:
+  KandidatController:
+    resource: true
+  TrenerController:
+    resource: true
+  PrijavaController:
+    resource: true
+  TreningController:
+    resource: true
+  TipTreningaController:
+    resource: true
+  StatusPrijaveController:
+    resource: true
+  SpecijalizacijaController:
+    resource: true
+  TrenerSpecijalizacijaController:
+    resource: true
+  BrojTelefonaKandidatController:
+    resource: true
+  BrojTelefonaTrenerController:
+    resource: true

@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kandidats', function (Blueprint $table) {
+        Schema::create('status_prijaves', function (Blueprint $table) {
             $table->id();
-            $table->string('ime_kandidata');
-            $table->string('prezime_kandidata');
-            $table->date('datum_rodjenja');
-            $table->string('email_kandidata');
-            $table->string('adresa');
-            $table->string('telefons');
+            $table->string('naziv_statusa');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kandidats');
+        Schema::dropIfExists('status_prijaves');
     }
 };

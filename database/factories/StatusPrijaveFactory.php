@@ -13,7 +13,6 @@ class StatusPrijaveFactory extends Factory
     {
         return [
             'naziv_statusa' => fake()->word(),
-            'opis' => fake()->word(),
         ];
     }
 }

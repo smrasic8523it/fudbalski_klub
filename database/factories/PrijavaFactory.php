@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Kandidat;
+use App\Models\StatusPrijave;
+use App\Models\Trening;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PrijavaFactory extends Factory
@@ -12,11 +15,9 @@ class PrijavaFactory extends Factory
     public function definition(): array
     {
         return [
-            'kandidat_id' => fake()->word(),
-            'trener_id' => fake()->word(),
-            'datum_prijave' => fake()->date(),
-            'motivacija' => fake()->word(),
-            'status_id' => fake()->word(),
+            'kandidat_id' => Kandidat::factory(),
+            'trening_id' => Trening::factory(),
+            'status_prijave_id' => StatusPrijave::factory(),
         ];
     }
 }

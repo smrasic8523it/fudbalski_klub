@@ -2,37 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // važno da koristi Authenticatable
+use Illuminate\Notifications\Notifiable;
 
-class Trener extends Model
+class Trener extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'treners';
+
     protected $fillable = [
-        'ime_trenera',
-        'prezime_trenera',
-        'email_trenera',
-        'korisnicko_ime',
-        'lozinka',
-        'specijalizacije',
-        'telefons',
+        'ime_trenera', 'prezime_trenera', 'email_trenera', 'korisnicko_ime', 'lozinka', 'role'
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    // Laravel Auth očekuje 'password', mi koristimo 'lozinka'
+    public function getAuthPassword()
     {
-        return [
-            'id' => 'integer',
-        ];
+        return $this->lozinka;
     }
 }

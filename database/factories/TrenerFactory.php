@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Specijalizacija;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TrenerFactory extends Factory
@@ -17,7 +18,7 @@ class TrenerFactory extends Factory
             'email_trenera' => fake()->word(),
             'korisnicko_ime' => fake()->word(),
             'lozinka' => fake()->word(),
-            'specijalizacije' => fake()->word(),
+            'specijalizacija_id' => Specijalizacija::factory(),
             'telefons' => fake()->word(),
         ];
     }

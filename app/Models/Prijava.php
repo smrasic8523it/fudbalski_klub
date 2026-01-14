@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Prijava extends Model
 {
@@ -16,10 +17,8 @@ class Prijava extends Model
      */
     protected $fillable = [
         'kandidat_id',
-        'trener_id',
-        'datum_prijave',
-        'motivacija',
-        'status_id',
+        'trening_id',
+        'status_prijave_id',
     ];
 
     /**
@@ -31,7 +30,24 @@ class Prijava extends Model
     {
         return [
             'id' => 'integer',
-            'datum_prijave' => 'date',
+            'kandidat_id' => 'integer',
+            'trening_id' => 'integer',
+            'status_prijave_id' => 'integer',
         ];
+    }
+
+    public function kandidat(): BelongsTo
+    {
+        return $this->belongsTo(Kandidat::class);
+    }
+
+    public function trening(): BelongsTo
+    {
+        return $this->belongsTo(Trening::class);
+    }
+
+    public function statusPrijave(): BelongsTo
+    {
+        return $this->belongsTo(StatusPrijave::class);
     }
 }

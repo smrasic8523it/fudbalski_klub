@@ -16,7 +16,6 @@ class StatusPrijave extends Model
      */
     protected $fillable = [
         'naziv_statusa',
-        'opis',
     ];
 
     /**

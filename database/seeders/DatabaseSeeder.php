@@ -6,14 +6,16 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Ovde dodaj seedere koje napraviš
-        // $this->call(KandidatSeeder::class);
-        // $this->call(TrenerSeeder::class);
+        $this->call([
+            TipTreningaSeeder::class,
+            StatusPrijaveSeeder::class,
+            SpecijalizacijaSeeder::class,
+            KandidatSeeder::class,
+            TrenerSeeder::class,
+            TreningSeeder::class,
+            PrijavaSeeder::class,
+        ]);
     }
 }
-

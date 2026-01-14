@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('email_trenera');
             $table->string('korisnicko_ime');
             $table->string('lozinka');
-            $table->string('specijalizacije');
-            $table->string('telefons');
+            $table->foreignId('specijalizacija_id')->nullable();
+            $table->string('telefons')->nullable();
             $table->timestamps();
         });
     }

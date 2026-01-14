@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\TipTreninga;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TreningFactory extends Factory
@@ -12,11 +13,10 @@ class TreningFactory extends Factory
     public function definition(): array
     {
         return [
-            'datum_treninga' => fake()->date(),
+            'tip_treninga_id' => TipTreninga::factory(),
+            'datum' => fake()->date(),
             'vreme' => fake()->time(),
-            'lokacija' => fake()->word(),
-            'trener_id' => fake()->word(),
-            'tip_id' => fake()->word(),
+            'opis' => fake()->word(),
         ];
     }
 }

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('status_prijaves', function (Blueprint $table) {
+        Schema::create('prijavas', function (Blueprint $table) {
             $table->id();
-            $table->string('naziv_statusa');
-            $table->string('opis');
+            $table->foreignId('kandidat_id');
+            $table->foreignId('trening_id');
+            $table->foreignId('status_prijave_id');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('status_prijaves');
+        Schema::dropIfExists('prijavas');
     }
 };

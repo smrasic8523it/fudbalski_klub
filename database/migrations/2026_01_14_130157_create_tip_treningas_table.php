@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tip_treningas', function (Blueprint $table) {
             $table->id();
             $table->string('naziv_tipa');
-            $table->string('opis');
+            $table->string('opis')->nullable();
             $table->timestamps();
         });
     }
